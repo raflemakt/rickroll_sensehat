@@ -15,7 +15,7 @@ def rickroll(number_of_frames=5300, rel_path="img"):
        images should be 8x8 pixels and be uniformly
        named with an incrementing number."""
 
-    FPS = 1 / 25
+    FRAME_DELAY = 1 / 25
 
     # Declare path to images
     script_dir = os.path.dirname(__file__)
@@ -33,11 +33,11 @@ def rickroll(number_of_frames=5300, rel_path="img"):
     for frame_num, frame in enumerate(filepaths):
         if frame_num > number_of_frames:
             break
-        with Image.open(filepath) as imgfile:
+        with Image.open(frame) as imgfile:
             img_array = np.asarray(imgfile)
             flat_image_array = [element for sublist in img_array for element in sublist]
             sense.set_pixels(flat_image_array)
-            sleep(FPS)
+            sleep(FRAME_DELAY)
 
 
 rickroll()
