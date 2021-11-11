@@ -5,7 +5,7 @@ from PIL import Image
 from time import sleep
 
 # Sensehat boilerplate
-import sense_hat as SenseHat
+from sense_hat import SenseHat
 sense = SenseHat()
 
 
@@ -29,9 +29,6 @@ def rickroll(number_of_frames=5300, rel_path="img"):
     # Sort filepaths by the numeric value, e.g. "img/sometext0001.png" --> 1
     filepaths.sort(key=lambda s: int("".join([c for c in s if c.isdigit()])))
     
-    for n in filepaths:
-        print(n)
-
     # Print images to the led array
     for frame_num, frame in enumerate(filepaths):
         if frame_num > number_of_frames:
